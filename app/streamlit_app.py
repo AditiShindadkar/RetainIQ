@@ -106,7 +106,7 @@ if page.startswith("1"):
             hovertemplate="%{x} risk<br>%{y:,} customers<extra></extra>"))
         fig.update_layout(title="Customers per risk group (label shows actual churn rate)")
         fig.update_yaxes(title="Customers", range=[0, seg["customers"].max() * 1.3])
-        st.plotly_chart(style(fig), use_container_width=True)
+        st.plotly_chart(style(fig), width="stretch")
     with right:
         st.markdown("**What each group means**")
         st.markdown(
@@ -119,7 +119,7 @@ if page.startswith("1"):
         st.dataframe(seg[["risk_group", "customers", "actual_churn_rate_pct", "share_of_all_churners_pct"]]
                      .rename(columns={"risk_group": "Risk", "customers": "Customers",
                                       "actual_churn_rate_pct": "Churn %", "share_of_all_churners_pct": "% of churners"})
-                     .round(1), hide_index=True, use_container_width=True)
+                     .round(1), hide_index=True, width="stretch")
 
 # --------------------------------------------------------------------- page 2
 elif page.startswith("2"):
@@ -130,12 +130,12 @@ elif page.startswith("2"):
     st.caption(f"{len(df):,} customers selected")
     a, b = st.columns(2)
     a.plotly_chart(churn_bar(df, "Contract", ["Month-to-month", "One year", "Two year"], "By contract type"),
-                   use_container_width=True)
-    b.plotly_chart(churn_bar(df, "tenure_group", TENURE_LABELS, "By tenure group"), use_container_width=True)
+                   width="stretch")
+    b.plotly_chart(churn_bar(df, "tenure_group", TENURE_LABELS, "By tenure group"), width="stretch")
     a, b = st.columns(2)
     pay_order = df.groupby("PaymentMethod")["Churn"].mean().sort_values(ascending=False).index.tolist()
-    a.plotly_chart(churn_bar(df, "PaymentMethod", pay_order, "By payment method"), use_container_width=True)
-    b.plotly_chart(churn_bar(df, "charge_bucket", CHARGE_LABELS, "By monthly-charge bucket"), use_container_width=True)
+    a.plotly_chart(churn_bar(df, "PaymentMethod", pay_order, "By payment method"), width="stretch")
+    b.plotly_chart(churn_bar(df, "charge_bucket", CHARGE_LABELS, "By monthly-charge bucket"), width="stretch")
 
     st.subheader("Contract × tenure heatmap (churn %)")
     pv = (df.pivot_table(index="Contract", columns="tenure_group", values="Churn", aggfunc="mean")
@@ -143,13 +143,13 @@ elif page.startswith("2"):
     fig = px.imshow(pv, text_auto=".1f", color_continuous_scale=["#cde2fb", "#2a78d6", "#0d366b"],
                     aspect="auto", labels=dict(color="Churn %"))
     fig.update_traces(hovertemplate="%{y} · %{x}<br>Churn %{z:.1f}%<extra></extra>")
-    st.plotly_chart(style(fig, 300), use_container_width=True)
+    st.plotly_chart(style(fig, 300), width="stretch")
 
     st.subheader("Top 10 churn drivers (SHAP)")
     drivers = pd.read_csv(config.REPORTS_DIR / "top10_churn_drivers.csv")
     st.dataframe(drivers[["plain_english", "mean_abs_shap"]]
                  .rename(columns={"plain_english": "Driver", "mean_abs_shap": "Importance"}),
-                 hide_index=True, use_container_width=True)
+                 hide_index=True, width="stretch")
 
 # --------------------------------------------------------------------- page 3
 elif page.startswith("3"):
@@ -212,7 +212,7 @@ elif page.startswith("3"):
                    "steps": [{"range": [0, 30], "color": "#d6f0d6"}, {"range": [30, 70], "color": "#fdeccc"},
                              {"range": [70, 100], "color": "#f5d0d0"}]}))
         gauge.update_layout(height=250, margin=dict(l=30, r=30, t=30, b=20))
-        m2.plotly_chart(gauge, use_container_width=True)
+        m2.plotly_chart(gauge, width="stretch")
         if inp["InternetService"] == "No" or inp["PhoneService"] == "No":
             st.caption("Note: add-on / multiple-line answers were set automatically to match the services chosen.")
 
@@ -242,7 +242,7 @@ else:
         fig.update_layout(title=f"Retention rate, High-risk customers (95% CI of uplift: "
                                 f"{e['ci_low_pp']:+.1f} to {e['ci_high_pp']:+.1f} pp)")
         fig.update_yaxes(title="Retained (%)", range=[0, 70])
-        st.plotly_chart(style(fig, 380), use_container_width=True)
+        st.plotly_chart(style(fig, 380), width="stretch")
     with right:
         st.markdown("**Business case**")
         # "\$" stops Streamlit reading $...$ as a maths formula.
@@ -258,7 +258,7 @@ else:
             "": ["Avg churn score", "Avg monthly charge"],
             "Test": [f"{e['balance_score_test']:.3f}", f"${e['balance_charge_test']:.2f}"],
             "Control": [f"{e['balance_score_control']:.3f}", f"${e['balance_charge_control']:.2f}"]}),
-            hide_index=True, use_container_width=True)
+            hide_index=True, width="stretch")
 
     st.subheader("What if the offer works less well?")
     sens = pd.DataFrame(results["experiment_sensitivity"])
@@ -269,7 +269,7 @@ else:
         "Significant": sens["significant"].map({True: "Yes", False: "No"}),
         "Cost per save": sens["cost_per_customer_saved"].map(lambda v: "—" if pd.isna(v) else f"${v:,.0f}"),
         "ROI": sens["roi_pct"].map(lambda v: "—" if pd.isna(v) else f"{v:,.0f}%")})
-    st.dataframe(sens_view, hide_index=True, use_container_width=True)
+    st.dataframe(sens_view, hide_index=True, width="stretch")
     st.caption("0% row = A/A check: the offer does nothing, so any uplift there is pure chance from the random split.")
     with st.expander("Full experiment readout"):
         st.markdown((config.REPORTS_DIR / "experiment_readout.md").read_text(encoding="utf-8"))

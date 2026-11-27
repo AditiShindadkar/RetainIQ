@@ -176,7 +176,7 @@ RetainIQ/
 ## 8. How to run
 
 ```bash
-git clone https://github.com/<your-username>/RetainIQ.git
+git clone https://github.com/AditiShindadkar/RetainIQ.git
 cd RetainIQ
 python -m venv .venv && .venv\Scripts\activate      # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
