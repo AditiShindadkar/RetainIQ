@@ -1,0 +1,16 @@
+# Exact versions: the saved model (models/best_model.joblib) was trained with
+# scikit-learn 1.7.2, and loading it with a different version can fail.
+pandas==2.3.2
+numpy==2.1.2
+scikit-learn==1.7.2
+xgboost==3.2.0
+lightgbm==4.6.0
+shap==0.50.0
+scipy==1.16.2
+statsmodels==0.14.6
+matplotlib==3.10.6
+plotly==6.7.0
+streamlit==1.56.0
+openpyxl==3.1.5
+joblib==1.5.2
+pytest==9.2.0

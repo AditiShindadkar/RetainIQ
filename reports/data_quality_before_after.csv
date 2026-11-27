@@ -1,0 +1,10 @@
+,before,after
+rows,7043,7043
+columns,21,24
+missing_values_total,11,0
+TotalCharges_missing_or_blank,11,0
+TotalCharges_dtype,object,float64
+SeniorCitizen_dtype,int64,object
+Churn_dtype,object,int64
+duplicate_rows,0,0
+duplicate_customer_ids,0,0

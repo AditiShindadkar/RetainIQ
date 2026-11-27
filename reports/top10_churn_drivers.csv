@@ -1,0 +1,11 @@
+feature,plain_english,mean_abs_shap,direction
+num__tenure,Higher months as a customer (tenure) -> lowers churn risk,0.67477,lowers risk
+cat__Contract_Month-to-month,Contract = Month-to-month -> raises churn risk,0.31549,raises risk
+cat__Contract_Two year,Contract = Two year -> lowers churn risk,0.26689,lowers risk
+cat__InternetService_Fiber optic,Internet type = Fiber optic -> raises churn risk,0.21141,raises risk
+cat__InternetService_DSL,Internet type = DSL -> lowers churn risk,0.19999,lowers risk
+cat__PaperlessBilling_Yes,Paperless billing = Yes -> raises churn risk,0.16397,raises risk
+cat__MultipleLines_No,Multiple phone lines = No -> lowers churn risk,0.12259,lowers risk
+cat__Dependents_Yes,Has dependents = Yes -> lowers churn risk,0.10523,lowers risk
+cat__PaymentMethod_Electronic check,Payment method = Electronic check -> raises churn risk,0.09429,raises risk
+cat__OnlineSecurity_Yes,Online security add-on = Yes -> lowers churn risk,0.08544,lowers risk

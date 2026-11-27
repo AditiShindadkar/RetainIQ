@@ -1,0 +1,6 @@
+assumed_churn_reduction_pct,uplift_pp,p_value,significant,cost_per_customer_saved,roi_pct
+0.0,2.8637,0.2157,False,,
+5.0,5.3837,0.0208,True,371.4894,160.281
+10.0,7.9038,0.0007,True,253.0435,282.1146
+20.0,13.5166,0.0,True,147.9661,553.4714
+30.0,19.244,0.0,True,103.9286,830.3661

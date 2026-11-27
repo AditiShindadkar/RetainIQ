@@ -1,0 +1,215 @@
+{
+  "data_quality": {
+    "before": {
+      "rows": 7043,
+      "columns": 21,
+      "missing_values_total": 11,
+      "TotalCharges_missing_or_blank": 11,
+      "TotalCharges_dtype": "object",
+      "SeniorCitizen_dtype": "int64",
+      "Churn_dtype": "object",
+      "duplicate_rows": 0,
+      "duplicate_customer_ids": 0
+    },
+    "after": {
+      "rows": 7043,
+      "columns": 24,
+      "missing_values_total": 0,
+      "TotalCharges_missing_or_blank": 0,
+      "TotalCharges_dtype": "float64",
+      "SeniorCitizen_dtype": "object",
+      "Churn_dtype": "int64",
+      "duplicate_rows": 0,
+      "duplicate_customer_ids": 0
+    }
+  },
+  "overall_churn_rate_pct": 26.54,
+  "model_comparison": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.7417,
+      "precision": 0.5087,
+      "recall": 0.7781,
+      "f1": 0.6152,
+      "f2": 0.7036,
+      "roc_auc": 0.8389,
+      "cv_f2_mean": 0.718,
+      "cv_f2_std": 0.0271
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.7544,
+      "precision": 0.5254,
+      "recall": 0.7754,
+      "f1": 0.6263,
+      "f2": 0.708,
+      "roc_auc": 0.8392,
+      "cv_f2_mean": 0.7168,
+      "cv_f2_std": 0.0199
+    },
+    {
+      "model": "XGBoost",
+      "accuracy": 0.7459,
+      "precision": 0.514,
+      "recall": 0.7861,
+      "f1": 0.6216,
+      "f2": 0.7108,
+      "roc_auc": 0.8433,
+      "cv_f2_mean": 0.7084,
+      "cv_f2_std": 0.0252
+    },
+    {
+      "model": "LightGBM",
+      "accuracy": 0.7516,
+      "precision": 0.5214,
+      "recall": 0.7807,
+      "f1": 0.6253,
+      "f2": 0.7101,
+      "roc_auc": 0.8444,
+      "cv_f2_mean": 0.7056,
+      "cv_f2_std": 0.0257
+    }
+  ],
+  "best_model": "Logistic Regression",
+  "split": {
+    "train_rows": 5634,
+    "test_rows": 1409
+  },
+  "top10_drivers": [
+    "Higher months as a customer (tenure) -> lowers churn risk",
+    "Contract = Month-to-month -> raises churn risk",
+    "Contract = Two year -> lowers churn risk",
+    "Internet type = Fiber optic -> raises churn risk",
+    "Internet type = DSL -> lowers churn risk",
+    "Paperless billing = Yes -> raises churn risk",
+    "Multiple phone lines = No -> lowers churn risk",
+    "Has dependents = Yes -> lowers churn risk",
+    "Payment method = Electronic check -> raises churn risk",
+    "Online security add-on = Yes -> lowers churn risk"
+  ],
+  "segments": [
+    {
+      "risk_group": "Low",
+      "customers": 2973,
+      "share_of_base_pct": 42.212,
+      "actual_churn_rate_pct": 4.675,
+      "avg_churn_score": 0.115,
+      "avg_monthly_charge": 56.227,
+      "churners_captured": 139,
+      "share_of_all_churners_pct": 7.437
+    },
+    {
+      "risk_group": "Medium",
+      "customers": 2324,
+      "share_of_base_pct": 32.997,
+      "actual_churn_rate_pct": 27.238,
+      "avg_churn_score": 0.495,
+      "avg_monthly_charge": 63.491,
+      "churners_captured": 633,
+      "share_of_all_churners_pct": 33.868
+    },
+    {
+      "risk_group": "High",
+      "customers": 1746,
+      "share_of_base_pct": 24.791,
+      "actual_churn_rate_pct": 62.829,
+      "avg_churn_score": 0.82,
+      "avg_monthly_charge": 80.986,
+      "churners_captured": 1097,
+      "share_of_all_churners_pct": 58.694
+    }
+  ],
+  "experiment": {
+    "n_test": 873,
+    "n_control": 873,
+    "retained_test": 430,
+    "retained_control": 312,
+    "retention_test_pct": 49.25544100801833,
+    "retention_control_pct": 35.738831615120276,
+    "uplift_pp": 13.516609392898054,
+    "ci_low_pp": 8.92268877772561,
+    "ci_high_pp": 18.110530008070498,
+    "z_stat": 5.712619762307436,
+    "p_value_z": 1.1125006984544743e-08,
+    "chi2_stat": 32.63402454870545,
+    "p_value_chi2": 1.1125006984544914e-08,
+    "significant": true,
+    "customers_saved": 118.00000000000001,
+    "campaign_cost": 17460.0,
+    "cost_per_customer_saved": 147.96610169491524,
+    "revenue_protected": 114096.10584192441,
+    "roi_pct": 553.4713965745956,
+    "power_pct": 99.9787593682226,
+    "balance_score_test": 0.8219837053954547,
+    "balance_score_control": 0.8172275537227572,
+    "balance_charge_test": 80.57634593356242,
+    "balance_charge_control": 81.39650630011454,
+    "assumed_relative_churn_reduction": 0.2,
+    "offer_cost_per_customer": 20.0,
+    "months_retained": 12
+  },
+  "experiment_sensitivity": [
+    {
+      "assumed_churn_reduction_pct": 0.0,
+      "uplift_pp": 2.8637,
+      "p_value": 0.2157,
+      "significant": false,
+      "cost_per_customer_saved": NaN,
+      "roi_pct": NaN
+    },
+    {
+      "assumed_churn_reduction_pct": 5.0,
+      "uplift_pp": 5.3837,
+      "p_value": 0.0208,
+      "significant": true,
+      "cost_per_customer_saved": 371.4894,
+      "roi_pct": 160.281
+    },
+    {
+      "assumed_churn_reduction_pct": 10.0,
+      "uplift_pp": 7.9038,
+      "p_value": 0.0007,
+      "significant": true,
+      "cost_per_customer_saved": 253.0435,
+      "roi_pct": 282.1146
+    },
+    {
+      "assumed_churn_reduction_pct": 20.0,
+      "uplift_pp": 13.5166,
+      "p_value": 0.0,
+      "significant": true,
+      "cost_per_customer_saved": 147.9661,
+      "roi_pct": 553.4714
+    },
+    {
+      "assumed_churn_reduction_pct": 30.0,
+      "uplift_pp": 19.244,
+      "p_value": 0.0,
+      "significant": true,
+      "cost_per_customer_saved": 103.9286,
+      "roi_pct": 830.3661
+    }
+  ],
+  "pivot_contract_x_tenure_pct": {
+    "0-12 months": {
+      "Month-to-month": 51.4,
+      "One year": 10.5,
+      "Two year": 0.0
+    },
+    "13-24 months": {
+      "Month-to-month": 37.7,
+      "One year": 8.1,
+      "Two year": 0.0
+    },
+    "25-48 months": {
+      "Month-to-month": 32.9,
+      "One year": 10.6,
+      "Two year": 2.2
+    },
+    "49-72 months": {
+      "Month-to-month": 26.0,
+      "One year": 12.9,
+      "Two year": 3.3
+    }
+  }
+}
