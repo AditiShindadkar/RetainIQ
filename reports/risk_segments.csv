@@ -1,0 +1,4 @@
+risk_group,customers,share_of_base_pct,actual_churn_rate_pct,avg_churn_score,avg_monthly_charge,churners_captured,share_of_all_churners_pct
+Low,2973,42.212,4.675,0.115,56.227,139,7.437
+Medium,2324,32.997,27.238,0.495,63.491,633,33.868
+High,1746,24.791,62.829,0.82,80.986,1097,58.694
