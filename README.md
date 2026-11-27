@@ -3,6 +3,10 @@
 **Predict which customers are about to leave, rank them by risk, and prove (with a test vs. control
 experiment) whether a retention campaign is worth its cost.**
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://retainiq-dashboard.streamlit.app/)
+
+**Live dashboard: [retainiq-dashboard.streamlit.app](https://retainiq-dashboard.streamlit.app/)**
+
 Built on the IBM Telco Customer Churn dataset. The same playbook applies to fintech and collections:
 replace "churn" with "roll into delinquency" and "retention offer" with "reminder call / payment plan".
 
